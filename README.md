@@ -11,3 +11,21 @@ We use this module to get server grains from salt API so we can use it in [Unuse
 5. Type `Get-Module -ListAvailable` and make sure you see Spot-Salt module in the list
 
 ### Usage
+
+`help Salt-Connect -Detailed`
+
+`help Salt -Detailed`
+
+`help salt-Run -Detailed`
+
+### Examples
+
+`salt-Connect saltStaging`: connects to saltStaging salt master and obtains security token
+
+`salt "TEST*" cmd.run "ifconfig"`: runs ifconfig on TEST server. This will return JID number that you can use with salt-Run command
+
+`salt-Run 20151001150618354722`: will return result for job ID 20151001150618354722 as an object.
+
+`salt "TEST*" cmd.run "ifconfig" | salt-run -Loud`: will return results of the command to the console in a nice format
+
+`salt -E "TEST0(1|2|3)" grains.items | salt-run`: will return all grains for three servers TEST01, TEST02, TEST03 as an object so it is easy to consume it in another scipt
